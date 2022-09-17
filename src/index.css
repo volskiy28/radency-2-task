@@ -16,6 +16,16 @@ input {
   border: none;
   width: 110px;
 }
+.archived {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.summary {
+  display: flex;
+  justify-content: flex-end;
+}
 .content {
   display: flex;
   justify-content: center;

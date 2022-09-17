@@ -10,7 +10,6 @@ export const Summary = () => {
     const data = getTableData();
     dispatch(changeTableData(data));
   }, []);
-  console.log(arr);
   const getTableData = () => {
     const allCategories = arr.map((note) => {
       return note.category;

@@ -2,8 +2,8 @@ import { Summary } from "./Summary";
 
 function Table() {
   return (
-    <div className="card">
-      <table className="table table-bordered">
+    <div className="summary">
+      <table>
         <thead>
           <tr>
             <th scope="col">Category</th>

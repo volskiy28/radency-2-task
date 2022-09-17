@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { Task } from "./components/Task";
+import { ArchivedTasks } from "./components/ArchivedTasks";
 import Table from "./components/Table";
 import { useState } from "react";
 import { CreateTask } from "./components/CreateTask";
@@ -39,6 +40,8 @@ function App() {
     handleAction();
     toggleHidden();
   };
+  const active = tasks.filter((note) => note.archived == false);
+  const archived = tasks.filter((note) => note.archived == true);
   return (
     <div className="App">
       <div className="content">
@@ -49,7 +52,7 @@ function App() {
         <p>dates</p>
       </div>
       <div className="align">
-        {tasks.map((task, index) => (
+        {active.map((task, index) => (
           <Task key={index} {...task} />
         ))}
       </div>
@@ -70,6 +73,9 @@ function App() {
         closePopupAndHandleAction={closePopupAndHandleAction}
       />
       <Table />
+      {archived.map((task, index) => (
+        <ArchivedTasks key={index} {...task} />
+      ))}
     </div>
   );
 }

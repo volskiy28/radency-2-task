@@ -92,9 +92,17 @@ export const tasksSlice = createSlice({
         arr: newNotes,
       };
     },
-    unarchivedItem: (state, action: PayloadAction<Tasks>) => {
-      state.arr = [...state.arr, action.payload];
-      action.payload.archived = false;
+    unarchivedItem: (state, action: PayloadAction<string>) => {
+      const newNotes = state.arr.map((note) => {
+        if (note.id == action.payload) {
+          return { ...note, archived: false };
+        }
+        return note;
+      });
+      return {
+        ...state,
+        arr: newNotes,
+      };
     },
     changeTableData: (state, action: PayloadAction<TableData>) => {
       return {
