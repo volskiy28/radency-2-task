@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { Task } from "./components/Task";
+import Table from "./components/Table";
 import { useState } from "react";
 import { CreateTask } from "./components/CreateTask";
 import { addItem } from "./store/taskSlice";
 function App() {
-  const archived = useAppSelector((state) => state.tasks.archived);
   const tasks = useAppSelector((state) => state.tasks.arr);
   const [hidden, setHidden] = useState(true);
   const toggleHidden = () => {
@@ -26,13 +26,14 @@ function App() {
     category: category,
     content: content,
     dates: dates,
+    archived: false,
   };
   const handleAction = () => {
     dispatch(addItem(item));
     setName("");
     setCategory("");
     setContent("");
-    setDates("");
+    setDates("e");
   };
   const closePopupAndHandleAction = () => {
     handleAction();
@@ -68,6 +69,7 @@ function App() {
         handleAction={handleAction}
         closePopupAndHandleAction={closePopupAndHandleAction}
       />
+      <Table />
     </div>
   );
 }

@@ -34,41 +34,47 @@ export const Task: React.FC<TaskTypes> = ({
     category: category,
     content: content,
     dates: dates,
+    archived: false,
   };
   return (
-    <div>
-      <div className="content">
-        <input
-          type="text"
-          value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
-          readOnly={readOnly}
-        />
-        <p>{dateCreated}</p>
-        <p>{category}</p>
-        <input
-          type="text"
-          value={taskContent}
-          onChange={(e) => setTaskContent(e.target.value)}
-          readOnly={readOnly}
-        />
-        <input
-          type="text"
-          value={taskDates}
-          onChange={(e) => setTaskDates(e.target.value)}
-          readOnly={readOnly}
-        />
-        <button onClick={editFunc}>{readOnly ? "edit" : "save"}</button>
-        <button onClick={() => dispatch(deleteItem(id))}>delete</button>
-        <button
-          onClick={() => {
-            dispatch(archiveItems(item));
-            dispatch(deleteItem(id));
-          }}
-        >
-          archive
-        </button>
-      </div>
+    <div className="content">
+      <input
+        id="input"
+        type="text"
+        value={taskName}
+        onChange={(e) => setTaskName(e.target.value)}
+        readOnly={readOnly}
+      />
+
+      <p>{dateCreated}</p>
+
+      <p>{category}</p>
+
+      <input
+        type="text"
+        id="input"
+        value={taskContent}
+        onChange={(e) => setTaskContent(e.target.value)}
+        readOnly={readOnly}
+      />
+
+      <input
+        type="text"
+        id="input"
+        value={taskDates}
+        onChange={(e) => setTaskDates(e.target.value)}
+        readOnly={readOnly}
+      />
+
+      <button onClick={editFunc}>{readOnly ? "edit" : "save"}</button>
+      <button onClick={() => dispatch(deleteItem(id))}>delete</button>
+      <button
+        onClick={() => {
+          dispatch(archiveItems(id));
+        }}
+      >
+        archive
+      </button>
     </div>
   );
 };
